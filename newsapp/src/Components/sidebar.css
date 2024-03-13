@@ -1,0 +1,41 @@
+.sidebody{
+  background-color: black;
+}
+
+.category{
+  margin-top:6rem;
+  margin-left: 0.2rem;;
+}
+
+.sidetitle{
+  background-color: black;
+  color:rgb(0, 119, 255);
+}
+
+.close{
+  background-color: rgb(255, 0, 0);
+}
+
+.close:hover{
+  background-color: red;
+}
+
+.offcanvas.show:not(.hiding), .offcanvas.showing {
+  margin-top:6rem;
+  width: 17rem;
+}
+
+.offcanvas.hiding {
+  margin-top:6rem;
+  width: 17rem;
+}
+
+@media (min-width: 163px)
+{.mb-sm-auto {
+  margin-bottom: auto!important;
+}
+.align-items-sm-start {
+  align-items: flex-start!important;
+}
+}
+
