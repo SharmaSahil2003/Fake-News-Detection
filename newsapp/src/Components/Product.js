@@ -8,7 +8,7 @@ function Product(){
     e.preventDefault();
 
     // Send a POST request to the Flask server
-    const response = await fetch('/predict', {
+    const response = await fetch('https://fake-news-backend-di3p.onrender.com/predict', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

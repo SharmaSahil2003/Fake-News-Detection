@@ -30,14 +30,14 @@ const App = () => {
             <Route exact path='/About' element={<About></About>}></Route>
             <Route exact path='/Contact' element={<Contact></Contact>}></Route>
             <Route exact path='/News' element={<NewsComponent/>}>
-              <Route index element={<News setProgress={setProgress}  key="general" pageSize={15} country="in" category="general"></News>}></Route>
-              <Route exact path='/News/General' element={<News setProgress={setProgress}  key="general" pageSize={15} country="in" category="general"></News>}></Route>
-              <Route exact path='/News/Health' element={<News setProgress={setProgress}  key="health" pageSize={15} country="in" category="health"></News>}></Route>
-              <Route exact path='/News/Science' element={<News setProgress={setProgress}  key="science" pageSize={15} country="in" category="science"></News>}></Route>
-              <Route exact path='/News/Sports' element={<News setProgress={setProgress}  key="sports" pageSize={15} country="in" category="sports"></News>}></Route>
-              <Route exact path='/News/Entertainment' element={<News setProgress={setProgress}  key="entertainment" pageSize={15} country="in" category="entertainment"></News>}></Route>
-              <Route exact path='/News/Technology' element={<News setProgress={setProgress}  key="technology" pageSize={15} country="in" category="technology"></News>}></Route>
-              <Route exact path='/News/Business' element={<News setProgress={setProgress}  key="business" pageSize={15} country="in" category="business"></News>}></Route>
+              <Route index element={<News setProgress={setProgress}  key="general" pageSize={15} country="us" category="general"></News>}></Route>
+              <Route exact path='/News/General' element={<News setProgress={setProgress}  key="general" pageSize={15} country="us" category="general"></News>}></Route>
+              <Route exact path='/News/Health' element={<News setProgress={setProgress}  key="health" pageSize={15} country="us" category="health"></News>}></Route>
+              <Route exact path='/News/Science' element={<News setProgress={setProgress}  key="science" pageSize={15} country="us" category="science"></News>}></Route>
+              <Route exact path='/News/Sports' element={<News setProgress={setProgress}  key="sports" pageSize={15} country="us" category="sports"></News>}></Route>
+              <Route exact path='/News/Entertainment' element={<News setProgress={setProgress}  key="entertainment" pageSize={15} country="us" category="entertainment"></News>}></Route>
+              <Route exact path='/News/Technology' element={<News setProgress={setProgress}  key="technology" pageSize={15} country="us" category="technology"></News>}></Route>
+              <Route exact path='/News/Business' element={<News setProgress={setProgress}  key="business" pageSize={15} country="us" category="business"></News>}></Route>
             </Route>
             <Route exact path='/Product' element={<Product></Product>}></Route>
             <Route exact path='/Login' element={<Login></Login>}></Route>
