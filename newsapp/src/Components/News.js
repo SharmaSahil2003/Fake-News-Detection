@@ -14,18 +14,20 @@ const News = (props) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
-    const updateNews = async (pageNo = 1) => {
+    const fetchNews = async (pageNo = 1, append = false) => {
         try {
             props.setProgress(10);
             setLoading(true);
-            
-            const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=39510d3e035e4d59abfdc51ba94c2a25&page=${pageNo}&pageSize=${props.pageSize}`;
-            
-            let response = await fetch(url);
-            props.setProgress(30);
-            let parsedData = await response.json();
 
-            setArticles(parsedData.articles || []);
+            const originalUrl = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=39510d3e035e4d59abfdc51ba94c2a25&page=${pageNo}&pageSize=${props.pageSize}`;
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(originalUrl)}`;
+
+            let response = await fetch(proxyUrl);
+            props.setProgress(30);
+            let data = await response.json();
+            let parsedData = JSON.parse(data.contents);
+
+            setArticles((prevArticles) => append ? [...prevArticles, ...(parsedData.articles || [])] : parsedData.articles || []);
             setTotalResults(parsedData.totalResults || 0);
             setPage(pageNo);
             setLoading(false);
@@ -37,24 +39,12 @@ const News = (props) => {
 
     useEffect(() => {
         document.title = `${capitalizeFirstLetter(props.category)} - RealityTimes`;
-        updateNews();
+        fetchNews();
         // eslint-disable-next-line
     }, [props.category]);
 
-    const fetchMoreData = async () => {
-        try {
-            const nextPage = page + 1;
-            const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=39510d3e035e4d59abfdc51ba94c2a25&page=${nextPage}&pageSize=${props.pageSize}`;
-
-            let response = await fetch(url);
-            let parsedData = await response.json();
-
-            setArticles((prevArticles) => [...prevArticles, ...(parsedData.articles || [])]);
-            setTotalResults(parsedData.totalResults || totalResults);
-            setPage(nextPage);
-        } catch (error) {
-            console.error("Error fetching more news:", error);
-        }
+    const fetchMoreData = () => {
+        fetchNews(page + 1, true);
     };
 
     return (
